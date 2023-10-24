@@ -1,0 +1,29 @@
+create database crud;
+
+use crud;
+
+create table tb_cliente(
+
+tb_cliente_id int AUTO_INCREMENT primary key not null,
+tb_cliente_nome varchar(256) not null ,
+tb_cliente_nome_use varchar(10) not null,
+tb_cliente_email varchar(128) not null,
+tb_cliente_senha varchar(8) not null,
+tb_cliente_telefone varchar(11) not null,
+tb_cliente_id_ende int not null
+);
+
+create table tb_endereco(
+  tb_endereco_id int AUTO_INCREMENT not null primary key,
+  tb_endereco_cep varchar(8),
+  tb_endereco_end varchar(256) not null,
+  tb_endereco_num int not null,
+  tb_endereco_comple varchar(128),
+  tb_endereco_bairro varchar(20) not null,
+  tb_endereco_cidade varchar(30) not null,
+  tb_endereco_estado varchar(20) not null
+
+);
+
+alter table tb_cliente
+add constraint tb_cliente_id foreign key (tb_cliente_id_ende) references tb_endereco(tb_endereco_id);
